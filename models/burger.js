@@ -53,8 +53,8 @@ var burger = {
 //     console.log("Item created successfully");
 // });
 
-burger.updateOne({burger_name: "Jessica cmon I need you "}, "id = 1", function(){
-    console.log("Value updated Successfully");
-});
+// burger.updateOne({burger_name: "Jessica cmon I need you "}, "id = 1", function(){
+//     console.log("Value updated Successfully");
+// });
 
 module.exports = burger; 

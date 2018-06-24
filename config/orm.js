@@ -72,7 +72,8 @@ var orm ={
 
 };//end of orm 
 
+module.exports = orm;
 
-orm.updateOne("burgers", {devoured: true}, "id = 1", function(){
-    console.log("Update success");
-});
+// orm.updateOne("burgers", {devoured: true}, "id = 1", function(){
+//     console.log("Update success");
+// });

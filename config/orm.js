@@ -33,7 +33,9 @@ function objToSql(ob){
 }
 
 var orm ={
+    
     //retrieves all items in table
+    //table: "name of table"
     selectAll: function(table, callback){
         var queryString = "SELECT * FROM " + table + ";";
         connection.query(queryString, function(err,result){
@@ -43,13 +45,19 @@ var orm ={
         })
     },
     //inserts an element onto the database
+     /**
+     * table: "table name"
+     * cols: ["burger_name", "devoured"]
+     * values: ["name of burger", boolean]
+     * callback: functions w/ no parameters 
+     */
     insertOne: function(table, columns, values, callback){
         //creation of the queryString
         var queryString = "INSERT INTO " + table;
         queryString +=" (" + columns.toString() + ")";
         queryString += " VALUES (" + printQuestionMarks(values.length) + ") ";
 
-        console.log(queryString);
+        // console.log(queryString);
 
         //connection query
         connection.query(queryString,values, function(err,result){
@@ -60,6 +68,11 @@ var orm ={
     },//end of function 
     
     //update the status of an element
+    /**
+     * table: "name of table"
+     * objectColumnValues: {name: "value"}
+     * condition: "id = 1"
+     */
     updateOne: function(table, objectColumnValues, condition, callback){
         var queryString = "UPDATE " + table;
         queryString +=" SET " + objToSql(objectColumnValues) + " WHERE " + condition;
@@ -72,6 +85,7 @@ var orm ={
 
 };//end of orm 
 
+//exports to be used by burger.js 
 module.exports = orm;
 
 

@@ -74,13 +74,4 @@ var orm ={
 
 module.exports = orm;
 
-<<<<<<< HEAD
 
-// orm.updateOne("burgers", {devoured: true}, "id = 1", function(){
-//     console.log("Update success");
-// });
-=======
-// orm.updateOne("burgers", {devoured: true}, "id = 1", function(){
-//     console.log("Update success");
-// });
->>>>>>> ceb1cb5dbcadf0b43d2e32073341466337c51525

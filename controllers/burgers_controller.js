@@ -12,7 +12,7 @@ router.get("/", function(req, res){
         var burgerObject = {
             burgers: data
         };
-        console.log(burgerObject.burgers);
+        // console.log(burgerObject.burgers);
         res.render("index", burgerObject);
     });
 });
@@ -22,7 +22,7 @@ router.get("/", function(req, res){
 //add
 router.post("/api/burgers",function(req, res){
     burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured],function(result){
-        console.log(result);
+        // console.log(result);
         res.json(result);
     } );
 })

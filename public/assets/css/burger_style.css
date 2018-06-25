@@ -1,4 +1,13 @@
+body{
+    background-color: #ffdb58;
+}
 h1{
     text-align: center;
     margin-bottom: 4%;
+}
+#prompt,h4{
+    text-align: center;
+}
+#devoured{
+    padding-left: 5%
 }

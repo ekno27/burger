@@ -9,8 +9,11 @@ var router = express.Router();
 //get 
 router.get("/", function(req, res){
     burger.selectAll(function(data){
-        console.log(data);
-        res.send(data);
+        var burgerObject = {
+            burgers: data
+        };
+        console.log(burgerObject.burgers);
+        res.render("index", burgerObject);
     });
 });
 

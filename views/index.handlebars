@@ -1,0 +1,34 @@
+<h1>Boigaz</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" id="not-eaten"> 
+                <h2>yet to be devoured</h2>
+                {{#each burgers}}
+                {{#unless devoured }}
+                <h3 id="{{id}}">{{burger_name}}</h3>
+                {{/unless}}
+                {{/each}}
+        </div><!--End of col-md -4-->
+
+        <div class="col-md-4" id="prompt">
+            <h4>Enter the name of your boiga</h4>
+            <input type="text" id="input" class="form-control" required>
+            
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+     Submit</button>
+      
+        </div><!--End of col-md-4-->
+
+        <div class="col-md-4" id="devoured">
+                 <h2>Already eaten</h2>
+                {{#each burgers}}
+                {{#if devoured }}
+                <h3>{{burger_name}}</h3>
+                {{/if}}
+                {{/each}}
+        </div><!--End of col-md-4-->
+    </div><!--End of row -->
+</div>
+
+

@@ -1,9 +1,9 @@
-<h1>Boigaz</h1>
+<h1><strong>BOIGAZ</strong></h1>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4" id="not-eaten"> 
-                <h2>Yer to be devoured</h2>
+                <h2><strong>Yet to be devoured</strong></h2>
                 {{#each burgers}}
                 {{#unless devoured }}
                 <h3 id="{{id}}">{{burger_name}}</h3>
@@ -11,7 +11,10 @@
                 {{/each}}
         </div><!--End of col-md -4-->
 
+       
+
         <div class="col-md-4" >
+            <img src="assets/img/burger.png" alt="burger" id="image">
             <h4 id="prompt">Enter the name of your boiga:</h4>
             <input type="text" id="input" class="form-control" required>
             
@@ -23,11 +26,13 @@
 
         <div class="col-md-4" id="devoured">
                  <h2><strong>DEVOURED</strong></h2>
+                
                 {{#each burgers}}
                 {{#if devoured }}
-                <h3>{{burger_name}}</h3>
+                <h3 class="devoured-items">{{burger_name}}</h3>
                 {{/if}}
                 {{/each}}
+                </div>
         </div><!--End of col-md-4-->
     </div><!--End of row -->
 </div>

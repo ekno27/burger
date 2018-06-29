@@ -2,29 +2,41 @@
 var express = require("express");
 var burger = require("../models/burger.js");
 var router = express.Router();
+var Burger = require("../models/burger.js");
 
 
 //routes and logic for each 
 
 //get 
 router.get("/", function(req, res){
-    burger.selectAll(function(data){
+    Burger.findAll().then(function(results){
         var burgerObject = {
-            burgers: data
-        };
-        // console.log(burgerObject.burgers);
+            burgers: results
+        }
+        console.log("get is good");
         res.render("index", burgerObject);
     });
 });
 
 
+    // burger.selectAll(function(data){
+    //     var burgerObject = {
+    //         burgers: data
+    //     };
+    //     // console.log(burgerObject.burgers);
+//         res.render("index", burgerObject);
+//     });
+// })
+
+
 
 //add
 router.post("/api/burgers",function(req, res){
-    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured],function(result){
-        // console.log(result);
-        res.json(result);
-    } );
+    Burger.create()
+    // burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured],function(result){
+    //     // console. log(result);
+    //     res.json(result);
+    // } );
 })
 
 
@@ -47,7 +59,53 @@ router.put("/api/burgers/:id",function(req,res){
 });
 
 
+module.exports = router;
 
 
 //export routes for server
-module.exports= router;
+
+
+//new new 
+
+
+
+// module.exports = function(app){
+//     //add
+// router.post("/api/burgers",function(req, res){
+//     burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured],function(result){
+//         // console.log(result);
+//         res.json(result);
+//     } );
+// })
+    
+    
+    //post
+//     app.post("/api/burgers",function(req,res){
+//         var burger = req.body;
+//         Burger.create(burger).then(function(results){
+//             console.log("added");
+//         })
+
+    
+    
+//     });
+
+//     //get 
+//     app.get("/", function(req, res){
+//         Burger.findAll().then(function(results){
+//             res.render("index",results);
+//         });
+//     });
+
+//     //upddate one  
+//     app.put("api/burgers/:id"),function(req, res){
+//         var condition = req.params.id;
+//         Burger.update(
+//             {devoured: req.body.devoured},
+//             {where: condition}
+//         ).then(function(results){
+//             if(result.changedRows ===0){
+//                 console.log("oops");
+//                 return res.status(404).end();
+//             }else{
+//            }

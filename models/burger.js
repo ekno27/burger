@@ -1,40 +1,40 @@
 //import orm for function
-var orm = require("../config/orm.js");
+// var orm = require("../config/orm.js");
 
-var burger = {
-    /*Only a callback is needed 
-     */
-    selectAll: function(callBack){
-        orm.selectAll("burgers",function(res){
-            callBack(res);
-        });//end of orm
-    },//end of select all
+// var burger = {
+//     /*Only a callback is needed 
+//      */
+//     selectAll: function(callBack){
+//         orm.selectAll("burgers",function(res){
+//             callBack(res);
+//         });//end of orm
+//     },//end of select all
 
-    /**
-     * cols: ["burger_name", "devoured"]
-     * values: ["name of burger", boolean]
-     * callback: functions w/ no parameters 
-     */
-    insertOne: function(cols, values, callBack){
-        orm.insertOne("burgers", cols, values, function(res){
-            callBack(res);
-        });//end of orm 
-    },//end of insert one
+//     /**
+//      * cols: ["burger_name", "devoured"]
+//      * values: ["name of burger", boolean]
+//      * callback: functions w/ no parameters 
+//      */
+//     insertOne: function(cols, values, callBack){
+//         orm.insertOne("burgers", cols, values, function(res){
+//             callBack(res);
+//         });//end of orm 
+//     },//end of insert one
     
 
-    /**
-     * objectColValues: {name: "lana del rey"}
-     * condition: id = 1
-     * callback: function
-     */
-    updateOne: function(objectColValues, condition, callBack){
-        orm.updateOne("burgers", objectColValues, condition, function(res){ 
-            callBack(res);
-        });
+//     /**
+//      * objectColValues: {name: "lana del rey"}
+//      * condition: id = 1
+//      * callback: function
+//      */
+//     updateOne: function(objectColValues, condition, callBack){
+//         orm.updateOne("burgers", objectColValues, condition, function(res){ 
+//             callBack(res);
+//         });
 
-    }
+//     }
 
-}//end of burger 
+// }//end of burger 
 
 
 //checking functions
@@ -54,4 +54,20 @@ var burger = {
 // });
 
 //send to burgerController.js
-module.exports = burger; 
+// module.exports = burger; 
+
+//new new
+
+var Sequelize = require("sequelize");
+var sequelize = require("../config/connection.js");
+
+var Burger = sequelize.define("sequel_table", {
+    burger_name: Sequelize.STRING,
+    devoured: Sequelize.BOOLEAN
+},{
+    timestamps: false
+});
+
+Burger.sync();
+module.exports = Burger;
+
